@@ -1,0 +1,1359 @@
+/* Warna & layout visual. Seluruh konten undangan ada di invitation-data.js. */
+:root {
+  --ivory: #fbf4e8;
+  --paper: #fffaf2;
+  --wine: #651e2b;
+  --deep: #40101c;
+  --gold: #ae8546;
+  --ink: #42252b;
+  --muted: #775b59;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--deep);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 5px;
+}
+button,
+a.button {
+  min-height: 48px;
+  min-width: 48px;
+}
+button:disabled {
+  cursor: default;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h2 {
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 12px 0 24px;
+}
+h3 {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+p + p {
+  margin-top: 12px;
+}
+.script {
+  font-family: "Snell Roundhand", "Apple Chancery", "URW Chancery L", cursive;
+  font-style: italic;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.eyebrow,
+.tiny-label,
+.date-line,
+.button,
+.guest,
+.family,
+.quote-source,
+.countdown,
+.account,
+.footer-credit,
+.music-toggle {
+  font-family: Arial, sans-serif;
+}
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.23em;
+  color: var(--gold);
+  line-height: 1.7;
+}
+.tiny-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.17em;
+  margin-top: 20px;
+  color: var(--muted);
+}
+.date-line {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-top: 12px;
+}
+.section {
+  position: relative;
+  text-align: center;
+  padding: 76px 36px;
+  isolation: isolate;
+  overflow: hidden;
+}
+.section:before,
+.section:after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 12px;
+  background: url("assets/decor/songket.svg") repeat-y center / 12px;
+  opacity: 0.75;
+  z-index: -1;
+}
+.section:after {
+  left: auto;
+  right: 0;
+  transform: scaleX(-1);
+}
+#invitation {
+  max-width: 480px;
+  background: var(--ivory);
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 0 60px #16070c60;
+}
+.cover {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 36px 32px 120px;
+  background: radial-gradient(ellipse at 50% 30%, #fffdf5 0%, #f1e2cd 95%);
+}
+.cover-inner {
+  width: 100%;
+  z-index: 2;
+}
+.cover .eyebrow {
+  color: var(--wine);
+  margin-bottom: 20px;
+}
+.arch {
+  border-radius: 190px 190px 12px 12px;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  padding: 5px;
+  position: relative;
+  background: var(--paper);
+  box-shadow: 0 6px 20px #651e2b12;
+}
+.arch img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.cover-photo {
+  width: 200px;
+  height: 230px;
+  margin: 0 auto 0;
+}
+.cover h1 {
+  font-size: 3.25rem;
+  color: var(--wine);
+  margin-top: 5px;
+}
+.guest {
+  margin: 26px 0 20px;
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+.guest strong {
+  display: block;
+  font-size: 1rem;
+  margin: 7px 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.guest p + p {
+  margin-top: 5px;
+}
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  padding: 12px 22px;
+  border: 1px solid var(--wine);
+  background: var(--wine);
+  color: var(--paper);
+  border-radius: 30px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.button:hover {
+  background: var(--deep);
+  transform: translateY(-2px);
+}
+.button.secondary {
+  color: var(--wine);
+  background: transparent;
+}
+.button.secondary:hover {
+  background: #651e2b0a;
+}
+.floral {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.cover-house {
+  position: absolute;
+  width: 75%;
+  left: 12.5%;
+  bottom: 55px;
+  opacity: 0.12;
+}
+.house {
+  width: 165px;
+  height: auto;
+  margin: 24px auto 30px;
+  display: block;
+}
+.opening h2,
+.closing h2 {
+  font-size: 1.45rem;
+  line-height: 1.6;
+}
+.opening p,
+.opening blockquote,
+.gifts > p,
+.events > p,
+.closing > p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+.ornament {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin: 32px 0;
+}
+.ornament:before,
+.ornament:after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+blockquote {
+  margin: 0;
+  font-style: italic;
+}
+.quote-source {
+  font-size: 0.75rem !important;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.couple {
+  background: var(--paper);
+}
+.profile {
+  margin-top: 45px;
+}
+.profile .arch {
+  width: 232px;
+  height: 320px;
+  max-width: 100%;
+  margin: auto;
+  border-radius: 140px 140px 140px 140px;
+  border: 2px solid var(--wine);
+}
+.profile .script {
+  color: var(--wine);
+  margin: 22px 0 8px;
+}
+.profile h3 {
+  font-size: 1.4rem;
+}
+.family {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  margin: 12px auto 0;
+  max-width: 280px;
+}
+.couple-divider {
+  font-size: 3rem;
+  font-style: italic;
+  color: var(--gold);
+  margin: 36px 0 -10px;
+}
+.events {
+  background: var(--wine);
+  color: var(--paper);
+}
+.events:before,
+.events:after {
+  filter: brightness(2);
+  opacity: 0.5;
+}
+.events .eyebrow {
+  color: #e3c38f;
+}
+.events > p {
+  color: #e9d5cd;
+}
+.event-card {
+  margin-top: 32px;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  border-radius: 150px 150px 18px 18px;
+  color: var(--ink);
+  padding: 40px 20px 30px;
+}
+.event-card .house {
+  width: 100px;
+  margin: 0 auto 22px;
+}
+.event-card h3 {
+  color: var(--wine);
+  font-size: 1.8rem;
+}
+.event-card .ornament {
+  margin: 18px 0;
+}
+.event-date {
+  font-size: 1.1rem;
+}
+.event-time {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  margin: 8px 0 22px;
+}
+.event-venue {
+  font-size: 1.1rem;
+}
+.event-address {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  margin-top: 8px;
+}
+.event-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+.calendar-options {
+  margin-top: 12px;
+}
+.calendar-options summary {
+  cursor: pointer;
+  min-height: 44px;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--wine);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-options a {
+  display: block;
+  color: var(--wine);
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  min-height: 44px;
+  padding: 8px;
+}
+.countdown-section {
+  background: #f1e2cf;
+}
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 30px 0;
+}
+.countdown div {
+  background: var(--paper);
+  border: 1px solid #b28c4c50;
+  border-radius: 40px 40px 8px 8px;
+  padding: 18px 0 12px;
+}
+.countdown strong {
+  display: block;
+  color: var(--wine);
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+.countdown span {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+#countdown-caption {
+  font-size: 0.875rem;
+}
+.gifts {
+  background: var(--paper);
+}
+.account {
+  text-align: left;
+  padding: 25px;
+  background: linear-gradient(130deg, var(--wine), var(--deep));
+  color: var(--paper);
+  border-radius: 12px;
+  margin-top: 22px;
+  border: 1px solid var(--gold);
+  position: relative;
+}
+.account-provider {
+  font-size: 0.75rem;
+  letter-spacing: 0.13em;
+  color: #e3c38f;
+}
+.account-number {
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  margin: 20px 0 0;
+  overflow-wrap: anywhere;
+}
+.account-holder {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+.account button {
+  margin-top: 22px;
+  background: var(--paper);
+  color: var(--wine);
+  border: 0;
+  width: 100%;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+.gallery button {
+  padding: 0;
+  border: 0;
+  background: #e8d9c4;
+  border-radius: 90px 90px 8px 8px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.gallery button:nth-child(even) {
+  border-radius: 8px 8px 90px 90px;
+  transform: translateY(20px);
+}
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.gallery button:hover img {
+  transform: scale(1.04);
+}
+.closing {
+  padding-bottom: 145px;
+  background: var(--paper);
+}
+.closing .script {
+  font-size: 3rem;
+  color: var(--wine);
+  margin-top: 18px;
+}
+.closing .eyebrow {
+  margin-top: 30px;
+}
+.footer-credit {
+  font-size: 0.7rem !important;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.music-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--wine);
+  color: var(--paper);
+  font-size: 1.3rem;
+  box-shadow: 0 3px 15px #0003;
+}
+.music-toggle[aria-pressed="true"] {
+  animation: pulse 3s infinite;
+}
+.desktop-intro {
+  display: none;
+}
+dialog {
+  border: 0;
+  background: #220b12f5;
+  color: white;
+  padding: 58px 16px 16px;
+  width: min(94vw, 800px);
+  max-height: 94svh;
+  overflow: auto;
+  border-radius: 12px;
+}
+dialog::backdrop {
+  background: #18050ce8;
+}
+#lightbox-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 70svh;
+  object-fit: contain;
+  margin: auto;
+}
+.lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 2rem;
+}
+.lightbox-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-top: 12px;
+}
+.lightbox-controls button {
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  font-size: 1.8rem;
+}
+.lightbox-controls span {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+}
+#toast {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 85vw;
+  background: var(--deep);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+  z-index: 30;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#toast.show {
+  opacity: 1;
+}
+.reveal {
+  opacity: 1;
+}
+.js-observe .reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.7s,
+    transform 0.7s;
+}
+.js-observe .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+[hidden] {
+  display: none !important;
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 6px #ae854633;
+  }
+}
+@media (max-width: 360px) {
+  .section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .cover {
+    padding-top: 26px;
+    padding-bottom: 100px;
+  }
+  .cover-photo {
+    width: 175px;
+    height: 200px;
+  }
+  .cover h1 {
+    font-size: 2.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js-observe .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Galeri mengikuti referensi: 3 kolom seragam, potret persegi panjang,
+   tanpa arch, tanpa pergeseran tiap kolom. Lightbox tetap aktif. */
+.gallery-section {
+  background-color: var(--paper);
+  background-image: linear-gradient(#fffaf2dc, #fffaf2dc), url("assets/decor/ukiran.svg");
+  background-size:
+    cover,
+    240px 240px;
+  padding: 64px 20px 72px;
+}
+.gallery-section > .eyebrow {
+  font-family: "Snell Roundhand", "Apple Chancery", "URW Chancery L", cursive;
+  font-style: italic;
+  font-size: 3.3rem;
+  letter-spacing: 0;
+  color: var(--wine);
+  line-height: 1.2;
+  transform: translateX(-25px);
+}
+.gallery-section > h2 {
+  color: var(--wine);
+  font-size: 3rem;
+  line-height: 1.15;
+  margin: -17px 0 38px;
+  transform: translateX(35px);
+}
+.gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 0;
+}
+.gallery button,
+.gallery button:nth-child(even) {
+  border-radius: 0;
+  transform: none;
+  aspect-ratio: 2 / 3;
+  border: 1px solid #ae85461f;
+}
+@media (max-width: 360px) {
+  .gallery-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .gallery {
+    gap: 7px;
+  }
+}
+
+/* Background ilustrasi asli dan variasi per bagian.
+   File gambar dipilih dari invitation-data.js, bukan tersebar di CSS. */
+.section {
+  background-image: none;
+  background-color: var(--ivory);
+}
+.section-artwork {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: -1;
+}
+.section::before,
+.section::after {
+  display: none;
+}
+.cover > .floral,
+.cover-house,
+.closing > .floral {
+  display: none;
+}
+.cover {
+  padding: 76px 42px 285px;
+  min-height: max(100svh, 940px);
+  align-items: flex-start;
+}
+.cover .cover-photo {
+  width: 170px;
+  height: 200px;
+}
+.cover .eyebrow {
+  margin-bottom: 20px;
+}
+.cover .guest {
+  background: #fffaf2e0;
+  border: 1px solid #ae854650;
+  border-radius: 20px;
+  padding: 12px 6px;
+  margin: 18px 0;
+}
+.cover .date-line {
+  margin-top: 8px;
+}
+.opening {
+  padding: 115px 46px 135px;
+  min-height: 900px;
+}
+.opening > .house {
+  width: 115px;
+  margin: 26px auto;
+}
+.couple {
+  padding: 110px 42px 145px;
+}
+.couple > .section-artwork {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.7;
+}
+.couple .profile .arch {
+  box-shadow: 0 8px 28px #651e2b20;
+  border-color: var(--gold);
+}
+.events {
+  padding: 95px 38px 145px;
+  background-color: var(--deep);
+  color: var(--paper);
+}
+.event-card {
+  background: #fffaf2f5;
+  box-shadow: 0 10px 30px #21071033;
+  border: 1px solid #d8b57d;
+}
+.countdown-section {
+  min-height: 730px;
+  padding: 100px 40px 270px;
+}
+.countdown-section > .section-artwork {
+  opacity: 0.9;
+}
+.countdown div {
+  background: #fffaf2ed;
+}
+.gifts {
+  padding: 105px 40px 115px;
+}
+.gifts > .section-artwork {
+  transform: scaleX(-1);
+}
+.account {
+  box-shadow: 0 8px 25px #651e2b1c;
+}
+.gallery-section {
+  padding: 90px 24px 115px;
+  background-image: none;
+}
+.gallery {
+  gap: 10px;
+}
+.gallery button {
+  border: 2px solid #fffaf2;
+  box-shadow: 0 2px 8px #651e2b15;
+}
+.gallery-section > .section-artwork {
+  opacity: 0.8;
+}
+.closing {
+  min-height: 880px;
+  padding: 100px 44px 300px;
+}
+.closing > .house {
+  display: none;
+}
+.closing > p:first-of-type {
+  margin-top: 30px;
+}
+@media (max-width: 360px) {
+  .cover {
+    padding: 70px 34px 270px;
+    min-height: 910px;
+  }
+  .cover .cover-photo {
+    width: 155px;
+    height: 185px;
+  }
+  .opening {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+  .couple,
+  .events,
+  .gifts,
+  .closing {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .countdown-section {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .gallery-section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .gallery {
+    gap: 7px;
+  }
+}
+
+/* Semua layar memakai satu kolom vertikal, seperti undangan di ponsel. */
+body {
+  padding: 0;
+  background: #40101c;
+}
+#invitation {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  min-height: 100svh;
+}
+.music-toggle {
+  right: max(18px, calc((100vw - 480px) / 2 + 18px));
+}
+
+/* Halaman mengikuti viewport aktual, termasuk perubahan address bar ponsel. */
+:root {
+  --page-height: 100vh;
+}
+@supports (height: 100dvh) {
+  :root {
+    --page-height: 100dvh;
+  }
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+#invitation {
+  height: var(--page-height);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  position: relative;
+  overscroll-behavior-y: contain;
+}
+#invitation::-webkit-scrollbar {
+  display: none;
+}
+.section {
+  height: var(--page-height);
+  min-height: 0;
+  max-height: var(--page-height);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.page-body {
+  width: 100%;
+  max-height: 100%;
+  padding: clamp(28px, 7vh, 64px) 38px;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-width: thin;
+}
+.section h2 {
+  font-size: clamp(1.6rem, 4vh, 2rem);
+  margin: 8px 0 16px;
+}
+.section p,
+.section blockquote {
+  line-height: 1.6;
+}
+.section .eyebrow {
+  font-size: 0.75rem;
+}
+.cover .page-body {
+  align-self: flex-start;
+  padding: clamp(26px, 5vh, 48px) 38px clamp(100px, 25vh, 230px);
+}
+.cover .cover-inner {
+  width: 100%;
+}
+.cover .cover-photo {
+  width: clamp(100px, 18vh, 160px);
+  height: clamp(116px, 21vh, 186px);
+}
+.cover .eyebrow {
+  margin-bottom: 12px;
+}
+.cover .tiny-label {
+  margin-top: 12px;
+}
+.cover h1 {
+  font-size: clamp(2.4rem, 6vh, 3.2rem);
+}
+.cover .date-line {
+  margin-top: 5px;
+}
+.cover .guest {
+  margin: 12px 0;
+  padding: 8px 6px;
+}
+.cover .guest strong {
+  margin: 3px 0;
+}
+.cover .button {
+  padding: 10px 18px;
+}
+.opening .house {
+  width: clamp(70px, 14vh, 120px);
+  margin: 16px auto;
+}
+.opening h2,
+.closing h2 {
+  font-size: clamp(1.15rem, 3vh, 1.4rem);
+  line-height: 1.5;
+}
+.opening p,
+.opening blockquote {
+  font-size: 1rem;
+}
+.opening .ornament {
+  margin: 24px 0;
+}
+.opening .page-body {
+  padding-bottom: clamp(80px, 15vh, 140px);
+}
+.quote-page .page-body {
+  padding-bottom: clamp(100px, 20vh, 180px);
+}
+.couple .profile {
+  margin-top: 20px;
+}
+.couple .profile .arch {
+  width: clamp(140px, 26vh, 225px);
+  height: clamp(190px, 35vh, 305px);
+}
+.couple .profile .script {
+  font-size: clamp(2.6rem, 6vh, 3.5rem);
+  margin: 12px 0 6px;
+}
+.profile h3 {
+  font-size: 1.25rem;
+}
+.profile .family {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.couple .section-artwork {
+  object-fit: fill;
+}
+.events .page-body {
+  padding: 32px 36px 60px;
+}
+.events #event-intro {
+  font-size: 0.875rem;
+}
+.event-card {
+  margin-top: 16px;
+  padding: 24px 18px 20px;
+  border-radius: 100px 100px 16px 16px;
+}
+.event-card .house {
+  width: 70px;
+  margin: 0 auto 12px;
+}
+.event-card h3 {
+  font-size: 1.6rem;
+}
+.event-card .ornament {
+  margin: 12px 0;
+}
+.event-card .event-time {
+  margin: 5px 0 14px;
+}
+.event-actions {
+  margin-top: 16px;
+  gap: 8px;
+}
+.event-card .event-date {
+  font-size: 1rem;
+}
+.event-card .event-venue {
+  font-size: 1rem;
+}
+.event-card .event-address {
+  margin-top: 5px;
+}
+.countdown-section .page-body {
+  padding-bottom: 28vh;
+}
+.countdown {
+  margin: 24px 0;
+}
+.gifts .page-body {
+  padding-top: 36px;
+  padding-bottom: 65px;
+}
+.gifts #gift-message {
+  font-size: 0.95rem;
+}
+.account {
+  padding: 22px;
+  margin-top: 22px;
+}
+.account .account-number {
+  margin-top: 15px;
+}
+.account button {
+  margin-top: 16px;
+}
+.gallery-section .page-body {
+  padding: 38px 26px 64px;
+}
+.gallery-section .eyebrow {
+  font-size: clamp(2.4rem, 5vh, 3.2rem);
+}
+.gallery-section h2 {
+  font-size: clamp(2.3rem, 5vh, 3rem);
+  margin: -12px 0 22px;
+}
+.gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: min(54vh, 425px);
+  gap: 9px;
+}
+.gallery button,
+.gallery button:nth-child(even) {
+  aspect-ratio: auto;
+  min-height: 44px;
+}
+.gallery img {
+  object-fit: cover;
+}
+.closing .page-body {
+  padding: 40px 38px 29vh;
+}
+.closing .script {
+  font-size: clamp(2.5rem, 6vh, 3rem);
+  margin-top: 12px;
+}
+.closing .eyebrow {
+  margin-top: 18px;
+}
+.closing .ornament {
+  margin: 20px 0;
+}
+.closing .page-body > p:first-of-type {
+  margin-top: 0;
+}
+.calendar-dialog {
+  width: min(90vw, 380px);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 64px 24px 30px;
+}
+.calendar-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--wine);
+  font-size: 2rem;
+}
+.calendar-dialog .event-actions {
+  margin: 0;
+}
+@media (max-height: 650px) {
+  .page-body {
+    padding: 24px 32px;
+  }
+  .cover .page-body {
+    padding: 22px 32px 110px;
+  }
+  .cover .cover-photo {
+    width: 106px;
+    height: 122px;
+  }
+  .cover .eyebrow {
+    margin-bottom: 8px;
+  }
+  .cover .tiny-label {
+    margin-top: 8px;
+    font-size: 0.6rem;
+  }
+  .cover h1 {
+    font-size: 2.5rem;
+  }
+  .cover .guest {
+    margin: 8px 0;
+    font-size: 0.7rem;
+    padding: 6px;
+  }
+  .cover .guest strong {
+    font-size: 0.9rem;
+  }
+  .events .page-body {
+    padding: 22px 32px 40px;
+  }
+  .events h2 {
+    margin-bottom: 8px;
+  }
+  .event-card {
+    margin-top: 10px;
+    padding: 18px 16px;
+  }
+  .event-card .house {
+    width: 52px;
+    margin-bottom: 6px;
+  }
+  .event-card .ornament {
+    margin: 8px 0;
+  }
+  .event-card .event-time {
+    margin-bottom: 8px;
+  }
+  .event-actions {
+    margin-top: 12px;
+  }
+  .gifts .page-body {
+    padding: 28px 32px 44px;
+  }
+  .closing .page-body {
+    padding: 28px 32px 23vh;
+  }
+  .closing p {
+    font-size: 0.9rem;
+  }
+  .closing .ornament {
+    margin: 14px 0;
+  }
+}
+@media (max-width: 360px) {
+  .page-body {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .cover .page-body,
+  .events .page-body,
+  .gifts .page-body,
+  .closing .page-body {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .section h2 {
+    font-size: 1.55rem;
+  }
+  .opening h2,
+  .closing h2 {
+    font-size: 1.15rem;
+  }
+  .gallery-section h2 {
+    font-size: 2.3rem;
+  }
+  .event-card {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .event-card .button {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #invitation {
+    scroll-behavior: auto;
+  }
+}
+
+/* Pisahkan pesan penutup dan tanda tangan agar layar kecil tetap lega. */
+.opening #event-intro {
+  margin-top: 18px;
+  font-size: 0.9rem;
+}
+.closing .page-body {
+  padding-bottom: 24vh;
+}
+.signature-page .page-body {
+  padding-bottom: 30vh;
+}
+@media (max-height: 650px) {
+  .closing .page-body {
+    padding-bottom: 90px;
+  }
+  .signature-page .page-body {
+    padding-bottom: 140px;
+  }
+}
+
+/* Kedua mempelai, seluruh rekening, dan seluruh galeri masing-masing satu layar. */
+.couple .page-body {
+  padding: 30px 28px 55px;
+}
+#profiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+.couple .profile {
+  margin: 0;
+  min-width: 0;
+}
+.couple .profile .arch {
+  width: min(100%, 155px);
+  height: clamp(150px, 27vh, 230px);
+}
+.couple .profile .script {
+  font-size: clamp(2rem, 4.6vh, 2.7rem);
+  margin: 10px 0 5px;
+}
+.couple .profile h3 {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+.couple .profile .family {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin-top: 8px;
+}
+.gifts .page-body {
+  padding: 28px 32px 44px;
+}
+.gifts h2 {
+  margin-bottom: 12px;
+}
+.gifts #gift-message {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+#accounts {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.account {
+  padding: 16px 20px;
+  margin: 0;
+}
+.account .account-number {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+.account .account-holder {
+  margin-top: 0;
+}
+.account button {
+  margin-top: 10px;
+  padding: 9px 14px;
+  min-height: 44px;
+}
+.gallery-section .page-body {
+  padding: 28px 26px 55px;
+}
+.gallery-section h2 {
+  margin-bottom: 18px;
+}
+.gallery {
+  height: min(67vh, 610px);
+  grid-template-rows: repeat(var(--gallery-rows, 4), minmax(0, 1fr));
+  gap: 8px;
+}
+@media (max-height: 650px) {
+  .couple .page-body {
+    padding: 24px 24px 38px;
+  }
+  #profiles {
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .couple .profile .arch {
+    height: 165px;
+  }
+  .couple .profile .script {
+    font-size: 2rem;
+    margin-top: 8px;
+  }
+  .gifts .page-body {
+    padding: 20px 28px 32px;
+  }
+  .gifts h2 {
+    margin-bottom: 8px;
+  }
+  .gifts #gift-message {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  #accounts {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .account {
+    padding: 12px 16px;
+  }
+  .account .account-number {
+    margin-top: 6px;
+  }
+  .account button {
+    margin-top: 8px;
+  }
+  .gallery-section .page-body {
+    padding: 22px 24px 42px;
+  }
+  .gallery {
+    height: 65vh;
+    gap: 7px;
+  }
+  .gallery-section h2 {
+    margin-bottom: 15px;
+  }
+}
+.account button:hover {
+  background: #f0dfc4;
+  color: var(--wine);
+}
+
+.cover .cover-photo {
+  width: min(100%, clamp(130px, 22vh, 190px));
+  height: clamp(150px, 26vh, 225px);
+}

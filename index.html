@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#651e2b" />
+    <meta name="description" content="Undangan pernikahan dengan kehangatan adat Minangkabau." />
+    <title>Undangan Pernikahan</title>
+    <link rel="icon" href="assets/decor/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="invitation-data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main id="invitation">
+      <section id="cover" class="cover section">
+        <div class="cover-inner">
+          <p class="eyebrow" id="cover-label"></p>
+          <div class="arch cover-photo"><img id="cover-photo" alt="Foto pasangan" fetchpriority="high" /></div>
+          <p class="tiny-label">DENGAN RAHMAT ALLAH SWT</p>
+          <h1 class="script" id="cover-names"></h1>
+          <p id="cover-date" class="date-line"></p>
+          <div class="guest">
+            <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <strong id="guest-name"></strong>
+            <p>Di tempat</p>
+          </div>
+          <button id="open-invitation" class="button">✉ <span>Buka Undangan</span></button>
+        </div>
+        <img class="cover-house" src="assets/decor/gadang.svg" alt="" /><img
+          class="floral"
+          src="assets/decor/flowers.svg"
+          alt=""
+        />
+      </section>
+      <div id="content" hidden>
+        <section class="section opening reveal" id="opening">
+          <span class="eyebrow">BISMILLAHIRRAHMANIRRAHIM</span
+          ><img class="house" src="assets/decor/gadang.svg" alt="Ornamen rumah gadang" loading="lazy" />
+          <h2 id="greeting"></h2>
+          <p id="intro"></p>
+          <div class="ornament">✦</div>
+          <blockquote id="quote"></blockquote>
+          <p class="quote-source" id="quote-source"></p>
+        </section>
+        <section class="section couple reveal" id="couple">
+          <p class="eyebrow">YANG BERBAHAGIA</p>
+          <h2>Sepasang hati</h2>
+          <div id="profiles"></div>
+        </section>
+        <section class="section events reveal" id="events">
+          <p class="eyebrow">HARI ISTIMEWA KAMI</p>
+          <h2>Janji & perayaan</h2>
+          <p id="event-intro"></p>
+          <div id="event-list"></div>
+        </section>
+        <section class="section countdown-section reveal">
+          <p class="eyebrow">SETIAP DETIK MENUJU</p>
+          <h2>Hari bahagia</h2>
+          <div id="countdown" class="countdown" aria-label="Hitung mundur acara"></div>
+          <p id="countdown-caption"></p>
+        </section>
+        <section class="section gifts reveal">
+          <p class="eyebrow">TANDA KASIH</p>
+          <h2>Amplop digital</h2>
+          <p id="gift-message"></p>
+          <div id="accounts"></div>
+        </section>
+        <section class="section gallery-section reveal">
+          <p class="eyebrow">CERITA DALAM BINGKAI</p>
+          <h2>Momen kami</h2>
+          <div id="gallery" class="gallery"></div>
+        </section>
+        <footer class="section closing reveal">
+          <img src="assets/decor/gadang.svg" class="house" loading="lazy" alt="" />
+          <p id="closing"></p>
+          <h2 id="closing-greeting"></h2>
+          <p class="eyebrow">KAMI YANG BERBAHAGIA</p>
+          <div id="footer-names" class="script"></div>
+          <div class="ornament">✦</div>
+          <p id="footer-credit" class="footer-credit"></p>
+          <img class="floral" src="assets/decor/flowers.svg" alt="" loading="lazy" />
+        </footer>
+      </div>
+    </main>
+    <button id="music-toggle" class="music-toggle" aria-label="Putar musik" aria-pressed="false" hidden>♪</button
+    ><audio id="music" loop preload="none"></audio>
+    <dialog id="lightbox" aria-label="Galeri foto">
+      <button class="lightbox-close" aria-label="Tutup foto">×</button><img id="lightbox-image" alt="" />
+      <div class="lightbox-controls">
+        <button id="photo-prev" aria-label="Foto sebelumnya">‹</button><span id="photo-counter"></span
+        ><button id="photo-next" aria-label="Foto berikutnya">›</button>
+      </div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript>Aktifkan JavaScript untuk membuka undangan ini.</noscript>
+  </body>
+</html>
