@@ -86,7 +86,8 @@ window.INVITATION_DATA = {
       calendar: {
         title: "Akad Nikah Iqbal & Adinda",
         description: "Mohon doa restu untuk pernikahan kami.",
-        location: "Jl. Jeruk II No. 85, RT 004/RW 011, Kec. Kuranji, Kota Padang",
+        location:
+          "Jl. Jeruk II No. 85, RT 004/RW 011, Kec. Kuranji, Kota Padang",
       },
     },
     {
@@ -99,18 +100,30 @@ window.INVITATION_DATA = {
       calendar: {
         title: "Resepsi Iqbal & Adinda",
         description: "Kami menantikan kehadiran Anda.",
-        location: "Jl. Jeruk II No. 85, RT 004/RW 011, Kec. Kuranji, Kota Padang",
+        location:
+          "Jl. Jeruk II No. 85, RT 004/RW 011, Kec. Kuranji, Kota Padang",
       },
     },
   ],
   countdownTarget: "2026-11-21T09:00:00+07:00",
   countdownCaption: "Semoga langkah kita dipertemukan dalam kebahagiaan.",
-  countdownFinished: "Hari bahagia telah tiba. Terima kasih atas doa restu Anda.",
+  countdownFinished:
+    "Hari bahagia telah tiba. Terima kasih atas doa restu Anda.",
   giftMessage:
     "Doa restu Anda adalah hadiah terindah bagi kami. Apabila berkenan memberikan tanda kasih, Anda dapat mengirimkannya melalui:",
   accounts: [
-    { provider: "BRI", number: "056001066277500", holder: "Iqbal Pangestu", label: "Salin No. Rekening" },
-    { provider: "BCA", number: "3121053720", holder: "Adinda Putri", label: "Salin No. Rekening" },
+    {
+      provider: "BRI",
+      number: "056001066277500",
+      holder: "Iqbal Pangestu",
+      label: "Salin No. Rekening",
+    },
+    {
+      provider: "BCA",
+      number: "3121053720",
+      holder: "Adinda Putri",
+      label: "Salin No. Rekening",
+    },
   ],
   // Grid galeri 3 kolom: tambah/hapus foto sesuai kebutuhan.
   gallery: [
@@ -131,5 +144,5 @@ window.INVITATION_DATA = {
   closing:
     "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu. Terima kasih atas kasih dan doa yang menyertai perjalanan kami.",
   closingGreeting: "Wassalamu’alaikum Warahmatullahi Wabarakatuh",
-  footerCredit: "Dibuat dengan kasih · Iqbal & Adinda",
+  footerCredit: "Dibuat dengan kasih · volumedevstudio",
 };
