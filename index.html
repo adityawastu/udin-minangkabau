@@ -71,6 +71,23 @@
           <h2>Momen kami</h2>
           <div id="gallery" class="gallery"></div>
         </section>
+        <section class="section wishes-section reveal" id="wishes" aria-labelledby="wishes-heading">
+          <p class="eyebrow">DOA & UCAPAN</p>
+          <h2 id="wishes-heading">Ucapan untuk kami</h2>
+          <p class="wishes-intro">Bagikan doa dan ucapan bahagia Anda. Nama dan ucapan akan terlihat oleh pengunjung undangan.</p>
+          <form id="wishes-form" class="wishes-form">
+            <label for="wish-name">Nama</label>
+            <input id="wish-name" name="nama" type="text" maxlength="100" autocomplete="name" placeholder="Nama Anda" required>
+            <label for="wish-message">Ucapan & doa</label>
+            <textarea id="wish-message" name="ucapan" rows="3" maxlength="1000" placeholder="Tulis ucapan untuk kedua mempelai..." required></textarea>
+            <button id="wish-submit" type="submit" class="button" disabled>Kirim Ucapan</button>
+          </form>
+          <p id="wish-status" class="wish-status" role="status" aria-live="polite"></p>
+          <div class="wishes-toolbar"><h3>Ucapan tamu</h3><button id="wish-refresh" type="button" class="button secondary" disabled>Perbarui</button></div>
+          <p id="wish-list-status" class="wish-status" role="status" aria-live="polite"></p>
+          <div id="wish-list" class="wish-list" aria-label="Daftar ucapan tamu"></div>
+          <button id="wish-more" type="button" class="button secondary" hidden>Muat ucapan lainnya</button>
+        </section>
         <footer class="section closing reveal">
           <img src="assets/decor/gadang.svg" class="house" loading="lazy" alt="" />
           <p id="closing"></p>

@@ -3,6 +3,13 @@
    Tanggal ISO wajib memuat zona waktu: +07:00 (WIB), +08:00 (WITA), +09:00 (WIT).
    Nama tamu: bagikan index.html?to=Nama%20Tamu. Parameter ditampilkan sebagai teks aman. */
 window.INVITATION_DATA = {
+  // Isi dengan Project URL dan PUBLISHABLE key dari proyek Supabase Anda.
+  // Key publik memang terlihat di browser. Akses data dilindungi SQL/RLS.
+  // JANGAN gunakan secret key atau service_role di sini.
+  supabase: {
+    url: "https://hjiwkdopbkwpvtdaznbf.supabase.co/rest/v1/",
+    publishableKey: "sb_publishable_qETSHVZ-hdsV-8aAuFd20Q_1sd7QHZm",
+  },
   // Judul bagian & label publik juga terpusat di sini.
   ui: {
     coverBlessing: "DENGAN RAHMAT ALLAH SWT",
@@ -43,6 +50,7 @@ window.INVITATION_DATA = {
     countdown: "assets/decor/background-cover.webp",
     gifts: "assets/decor/background-gallery.webp",
     gallery: "assets/decor/background-gallery.webp",
+    wishes: "assets/decor/background-floral.webp",
     closing: "assets/decor/background-cover.webp",
   },
   title: "Undangan Pernikahan · Iqbal & Adinda",

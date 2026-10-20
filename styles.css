@@ -1358,3 +1358,26 @@ body {
   width: min(100%, clamp(130px, 22vh, 190px));
   height: clamp(150px, 26vh, 225px);
 }
+
+/* Buku tamu: mengikuti warna dan halaman gulir undangan. */
+.wishes-section { background: var(--ivory); }
+.wishes-section .page-body { padding: 36px 28px 60px; }
+.wishes-section .section-artwork { opacity: .35; }
+.wishes-intro, .wish-status { font-size: .85rem; color: var(--muted); }
+.wishes-form { display: grid; gap: 8px; margin: 20px 0 10px; text-align: left; font-family: Arial, sans-serif; }
+.wishes-form label { font-size: .85rem; font-weight: 600; }
+.wishes-form input, .wishes-form textarea { width: 100%; min-width: 0; padding: 12px; border: 1px solid #ae854680; border-radius: 10px; background: var(--paper); color: var(--ink); font: 16px/1.5 Arial, sans-serif; }
+.wishes-form textarea { resize: vertical; min-height: 96px; }
+.wishes-form input:focus-visible, .wishes-form textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.wishes-form .button { margin-top: 6px; }
+.wishes-section button:disabled { opacity: .6; cursor: default; }
+.wish-status { margin: 10px 0; overflow-wrap: anywhere; }
+.wishes-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 24px 0 12px; }
+.wishes-toolbar h3 { font-size: 1.2rem; }
+.wishes-toolbar .button { padding: 8px 14px; }
+.wish-list { display: grid; gap: 12px; text-align: left; }
+.wish-card { background: var(--paper); border: 1px solid #ae854650; border-radius: 12px; padding: 14px; overflow-wrap: anywhere; }
+.wish-name { margin: 0; color: var(--wine); font: 600 .95rem/1.5 Arial, sans-serif; }
+.wish-date { display: block; margin: 3px 0 8px; color: var(--muted); font: .72rem/1.5 Arial, sans-serif; }
+.wish-message { white-space: pre-wrap; font-size: .95rem; }
+#wish-more { margin-top: 16px; }

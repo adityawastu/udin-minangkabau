@@ -61,6 +61,7 @@
     countdown: ".countdown-section",
     gifts: ".gifts",
     gallery: ".gallery-section",
+    wishes: ".wishes-section",
     closing: ".closing",
   };
   Object.entries(backgroundSections).forEach(([key, selector]) => {
@@ -504,4 +505,134 @@
     );
     document.querySelectorAll(".reveal").forEach((n) => observer.observe(n));
   }
+  // Buku tamu Supabase: REST API bawaan, tanpa library tambahan.
+  function setupWishes() {
+    const form = $("wishes-form"), submit = $("wish-submit");
+    const refresh = $("wish-refresh"), more = $("wish-more");
+    const list = $("wish-list"), status = $("wish-status");
+    const listStatus = $("wish-list-status"), config = data.supabase || {};
+    const name = $("wish-name"), message = $("wish-message");
+    name.value = new URLSearchParams(location.search).get("to")?.trim().slice(0, 100) || "";
+    let endpoint;
+    try {
+      const base = new URL(config.url);
+      if (base.protocol !== "https:" || base.hostname.includes("YOUR_PROJECT") ||
+          !config.publishableKey?.startsWith("sb_publishable_") ||
+          config.publishableKey.includes("GANTI_DENGAN")) throw new Error("configuration");
+      endpoint = new URL("/rest/v1/invitation_comments", base);
+    } catch {
+      status.textContent = "Ucapan belum tersedia. Silakan hubungi pemilik undangan.";
+      form.addEventListener("submit", (event) => event.preventDefault());
+      return;
+    }
+    submit.disabled = false;
+    refresh.disabled = false;
+    const pageSize = 10;
+    let loading = false, sending = false, offset = 0;
+    const shown = new Set();
+    const timestamp = new Intl.DateTimeFormat("id-ID", {
+      day: "numeric", month: "short", year: "numeric", hour: "2-digit",
+      minute: "2-digit", timeZone: data.timezone,
+    });
+    async function request(url, options = {}) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(url, {
+          ...options, signal: controller.signal, cache: "no-store",
+          headers: { apikey: config.publishableKey, ...options.headers },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return options.method === "POST" ? null : await response.json();
+      } finally { clearTimeout(timer); }
+    }
+    function renderComment(row) {
+      const card = el("article", "wish-card");
+      const dateNode = el("time", "wish-date");
+      const created = new Date(row.created_at);
+      if (!Number.isNaN(created.getTime())) {
+        dateNode.dateTime = created.toISOString();
+        dateNode.textContent = timestamp.format(created);
+      }
+      // textContent melalui helper el(): teks tamu tidak dieksekusi sebagai HTML.
+      card.append(el("h4", "wish-name", row.nama), dateNode, el("p", "wish-message", row.ucapan));
+      return card;
+    }
+    async function loadComments(reset = false) {
+      if (loading) return;
+      loading = true;
+      submit.disabled = true;
+      refresh.disabled = more.disabled = true;
+      list.setAttribute("aria-busy", "true");
+      listStatus.textContent = "Memuat ucapan...";
+      const nextOffset = reset ? 0 : offset;
+      try {
+        const url = new URL(endpoint);
+        url.search = new URLSearchParams({
+          select: "id,nama,ucapan,created_at", order: "created_at.desc,id.desc",
+          limit: String(pageSize), offset: String(nextOffset),
+        });
+        const rows = await request(url);
+        if (!Array.isArray(rows)) throw new Error("Invalid response");
+        if (reset) { list.replaceChildren(); shown.clear(); }
+        rows.forEach((row) => {
+          if (!shown.has(row.id)) { list.append(renderComment(row)); shown.add(row.id); }
+        });
+        offset = nextOffset + rows.length;
+        more.hidden = rows.length < pageSize;
+        listStatus.textContent = shown.size ? "" : "Belum ada ucapan. Jadilah yang pertama memberi doa!";
+      } catch {
+        listStatus.textContent = "Ucapan belum dapat dimuat. Ketuk Perbarui untuk mencoba lagi.";
+      } finally {
+        loading = false;
+        submit.disabled = sending;
+        list.setAttribute("aria-busy", "false");
+        refresh.disabled = more.disabled = sending;
+      }
+    }
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (sending || loading) return;
+      name.setCustomValidity(name.value.trim() ? "" : "Silakan isi nama Anda.");
+      message.setCustomValidity(message.value.trim() ? "" : "Silakan isi ucapan Anda.");
+      if (!form.reportValidity()) return;
+      sending = true;
+      submit.disabled = refresh.disabled = more.disabled = true;
+      submit.textContent = "Mengirim...";
+      status.textContent = "";
+      try {
+        await request(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Prefer: "return=minimal" },
+          body: JSON.stringify({ nama: name.value.trim(), ucapan: message.value.trim() }),
+        });
+        message.value = "";
+        status.textContent = "Terima kasih! Ucapan Anda berhasil disimpan.";
+        await loadComments(true);
+      } catch {
+        status.textContent = "Pengiriman belum dapat dikonfirmasi. Periksa daftar ucapan dengan tombol Perbarui sebelum mengirim ulang.";
+      } finally {
+        sending = false;
+        submit.disabled = false;
+        refresh.disabled = more.disabled = loading;
+        submit.textContent = "Kirim Ucapan";
+      }
+    });
+    name.addEventListener("input", () => name.setCustomValidity(""));
+    message.addEventListener("input", () => message.setCustomValidity(""));
+    refresh.addEventListener("click", () => loadComments(true));
+    more.addEventListener("click", () => loadComments());
+    // Ambil data ketika bagian ucapan mendekati layar agar pembukaan tetap ringan.
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          loadComments(true);
+        }
+      }, { root: $("invitation"), rootMargin: "200px" });
+      observer.observe($("wishes"));
+    } else { loadComments(true); }
+  }
+  setupWishes();
+
 })();
